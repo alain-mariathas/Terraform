@@ -5,12 +5,12 @@ variable "admin" {
 
 variable "region" {
   type    = string
-  default = "us-east-1"
+  default = "us-east-1a"
 }
 
 variable "type_instance" {
   type    = string
-  default = "t2.nano"
+  default = "t2.micro"
 }
 
 variable "cle_ssh" {

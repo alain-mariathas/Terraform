@@ -7,7 +7,7 @@ module "sg" {
 #Instanciation module ebs
 module "ebs" {
   source        = "../modules/ebs"
-  capacite_disque = 5
+  size = 5
   admin = "app-alain"
 }
 
