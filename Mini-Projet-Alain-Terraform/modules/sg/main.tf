@@ -1,44 +1,35 @@
 resource "aws_security_group" "sg" {
   name        = "${var.admin}-sg"
-  description = "${var.description_sg_group}"
-
   ingress {
-    description      = "${var.description_ssh}"
-    from_port        = var.port_ssh
-    to_port          = var.port_ssh
-    protocol         = "${var.protocol}"
-    cidr_blocks      = ["${var.cidr_blocks}"]
-    ipv6_cidr_blocks = ["${var.ipv6_cidr_blocks}"]
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    description      = "${var.description_http}"
-    from_port        = var.port_http
-    to_port          = var.port_http
-    protocol         = "${var.protocol}"
-    cidr_blocks      = ["${var.cidr_blocks}"]
-    ipv6_cidr_blocks = ["${var.ipv6_cidr_blocks}"]
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    description      = "${var.description_https}"
-    from_port        = var.port_https
-    to_port          = var.port_https
-    protocol         = "${var.protocol}"
-    cidr_blocks      = ["${var.cidr_blocks}"]
-    ipv6_cidr_blocks = ["${var.ipv6_cidr_blocks}"]
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
-    description      = "${var.description_egress}"
-    from_port        = var.port_egress
-    to_port          = var.port_egress
-    protocol         = "${var.protocol_egress}"
-    cidr_blocks      = ["${var.cidr_blocks}"]
-    ipv6_cidr_blocks = ["${var.ipv6_cidr_blocks}"]
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
     Name = "${var.admin}-sg"
   }
+
 }

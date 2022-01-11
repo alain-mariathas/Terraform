@@ -1,4 +1,4 @@
 provider "aws" {
-  region                  = var.zone_dispo
+  region                  = var.region
   shared_credentials_file = var.credentials
 }

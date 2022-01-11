@@ -1,6 +1,6 @@
 data "aws_ami" "ubuntu_bionic_ami" {
   most_recent = true
-  owners      = ["${var.id_compte_ubuntu}"]
+  owners      = ["${var.id_compte_owner}"]
 
   filter {
     name   = "name"
@@ -12,8 +12,8 @@ resource "aws_instance" "alain-ec2" {
   ami               = data.aws_ami.ubuntu_bionic_ami.id
   instance_type     = var.type_instance
   key_name          = var.cle_ssh
-  availability_zone = var.zone_dispo
-  security_groups   = ["${var.securite_groupe}"]
+  availability_zone = var.region
+  security_groups   = ["${var.securite_group}"]
   tags = {
     Name = "${var.admin}-ec2"
   }
@@ -32,11 +32,9 @@ resource "aws_instance" "alain-ec2" {
     connection {
       type        = "ssh"
       user        = "${var.utilisateur_ssh}"
-      private_key = file("/home/allan/.aws/${var.cle_ssh}.pem")
+      private_key = file("C:/Users/Alain/${var.cle_ssh}.pem")
       host        = "${self.public_ip}"
     }
   }
 
-
 }
-
