@@ -5,5 +5,5 @@ variable "region" {
 
 variable "credentials" {
   type = string 
-  default = "C:/Users/Alain/credentials"
+  default = "/home/ubuntu/credentials"
 }
